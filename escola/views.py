@@ -20,6 +20,7 @@ class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
     queryset = Curso.objects.all() # Consulta todos os objetos do model Curso
     serializer_class = CursoSerializer # Classe que serializa os dados do model Curso
+    http_method_names = ['get', 'post', 'put', 'path'] # Define os métodos HTTP que serão aceitos
 
     def create(self, request):
         '''Cria um curso e retorna a URL para acessar o curso criado tornando a API mais auto descritiva'''

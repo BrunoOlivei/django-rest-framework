@@ -138,13 +138,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
      'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
-     'DEFAULT_PERMISSION_CLASSES': [
-         'rest_framework.permissions.IsAuthenticated',
-         'rest_framework.permissions.DjangoModelPermissions'
-     ], # Permissão de autenticação
-     'DEFAULT_AUTHENTICATION_CLASSES': [
-            'rest_framework.authentication.BasicAuthentication',
-     ], # Autenticação básica
+    #  'DEFAULT_PERMISSION_CLASSES': [
+    #      'rest_framework.permissions.IsAuthenticated',
+    #      'rest_framework.permissions.DjangoModelPermissions'
+    #  ], # Permissão de autenticação
+    #  'DEFAULT_AUTHENTICATION_CLASSES': [
+    #         'rest_framework.authentication.BasicAuthentication',
+    #  ], # Autenticação básica
          'DEFAULT_THROTTLE_CLASSES': [
         'rest_framework.throttling.AnonRateThrottle',
         'rest_framework.throttling.UserRateThrottle'
@@ -153,14 +153,14 @@ REST_FRAMEWORK = {
         'anon': '100/day',
         'user': '1000/day'
     }, # Define limite de requisições por usuário 1000 por dia e anônimo 100 por dia
-    'DEFAULT_PARSER_CLASSES': [
-        'rest_framework.parsers.JSONParser',
-        'rest_framework_xml.parsers.XMLParser',
-    ],
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework_xml.renderers.XMLRenderer',
-    ],
+    # 'DEFAULT_PARSER_CLASSES': [
+    #     'rest_framework.parsers.JSONParser',
+    #     'rest_framework_xml.parsers.XMLParser',
+    # ],
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #     'rest_framework.renderers.JSONRenderer',
+    #     'rest_framework_xml.renderers.XMLRenderer',
+    # ],
 }
 
 # Configurações do CORS
