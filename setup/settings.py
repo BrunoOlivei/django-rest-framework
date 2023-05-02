@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'escola', # App criada
     'corsheaders', # CORS
+    'admin_honeypot', # Admin honeypot
 ]
 
 MIDDLEWARE = [

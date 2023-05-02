@@ -13,7 +13,8 @@ router.register('cursos', CursosViewSet, basename='Cursos') # Registra a rota cu
 router.register('matriculas', MatriculaViewSet, basename='Matriculas') # Registra a rota matriculas
 
 urlpatterns = [
-    path('controle-geral/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')), # Inclui a rota do admin honeypot
+    path('controle-geral/', admin.site.urls), # Inclui a rota do admin correta
     path('', include(router.urls)), # Inclui as rotas do router
     path('alunos/<int:pk>/matriculas/', ListaMatriculasAluno.as_view()),
     path('cursos/<int:pk>/matriculas/', ListaAlunosMatriculados.as_view()),
