@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # Tradução
 ]
 
 ROOT_URLCONF = 'setup.urls'
@@ -152,9 +153,36 @@ REST_FRAMEWORK = {
         'anon': '100/day',
         'user': '1000/day'
     }, # Define limite de requisições por usuário 1000 por dia e anônimo 100 por dia
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework_xml.parsers.XMLParser',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework_xml.renderers.XMLRenderer',
+    ],
 }
 
 # Configurações do CORS
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # React
 ]
+
+# Configurações do Redis
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1', # Redis
+        'OPTIONS': {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache" # Não armazena sessão no banco de dados (admin)
+SESSION_CACHE_ALIAS = "default" # Armazena sessão no Redis
+
+# Tradução
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
